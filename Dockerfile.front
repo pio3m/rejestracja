@@ -1,0 +1,35 @@
+# Etap 1: Budowanie aplikacji
+FROM node:16-alpine AS build
+
+# Ustawienie katalogu roboczego
+WORKDIR /usr/src/app
+
+# Kopiowanie plików package.json oraz package-lock.json do kontenera
+COPY frontend/package.json ./
+
+# Instalacja zależności
+RUN npm install
+
+# Kopiowanie pozostałych plików aplikacji do kontenera
+COPY . .
+
+# Budowanie aplikacji
+RUN npm run build
+
+# Etap 2: Serwowanie aplikacji
+FROM node:16-alpine
+
+# Instalacja serwera do uruchamiania aplikacji Next.js
+RUN npm install -g serve
+
+# Ustawienie katalogu roboczego
+WORKDIR /usr/src/app
+
+# Kopiowanie zbudowanej aplikacji z poprzedniego etapu
+COPY --from=build /usr/src/app ./
+
+# Serwowanie aplikacji w trybie produkcyjnym za pomocą Next.js
+CMD ["npm", "run", "start"]
+
+# Eksponowanie portu 3000, na którym działa aplikacja
+EXPOSE 3000

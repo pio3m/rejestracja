@@ -1,0 +1,78 @@
+# Pliki systemowe macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ikony
+Icon
+
+# Miniatury
+._*
+
+# Pliki, które mogą pojawić się na zewnętrznym dysku
+.Spotlight-V100
+.Trashes
+
+# Pliki, które mogą pojawić się na dysku sieciowym
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Pliki PHP
+*.log
+*.sql
+*.sqlite
+.php_cs.cache
+
+# Katalogi PHP
+/vendor/
+/node_modules/
+/public/hot/
+/public/storage/
+/storage/*.key
+
+# Pliki środowiskowe
+.env
+.env.*
+!.env.example
+
+# Pliki konfiguracyjne IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Pliki cache i logów
+*.log
+*.cache
+.phpunit.result.cache
+
+# Pliki Composera
+composer.phar
+/vendor/
+
+# Pliki Docker
+docker-compose.override.yml
+
+# React i frontend
+/frontend/node_modules/
+/frontend/.pnp
+/frontend/.pnp.js
+/frontend/coverage
+/frontend/build
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Inne pliki i katalogi specyficzne dla projektu
+/build/
+/dist/
+/tmp/
+/logs/
+

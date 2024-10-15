@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # Backend PHP z Apache
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-app
+    ports:
+      - "8080:80" # Eksponujemy backend na localhost:8080
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    networks:
+      - app-network
+
+  # Frontend React
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.front
+    container_name: react-app
+    ports:
+      - "3000:3000" # Eksponujemy frontend na localhost:3000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
